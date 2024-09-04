@@ -30,8 +30,12 @@ class EndPoints {
   static const String getListOfOffers = '${offer}get_list_of_offers.php';
 
   //----------------- orders
-  static const String orders = '${baseURL}orders';
-
+  static const String orders = '${baseURL}orders/';
   static const String getOrders = '${orders}get_orders.php';
   static const String deleteOrder = '${orders}delete_order.php';
+
+  //-----------------------admin
+  static const String admin = '${baseURL}admin/';
+  static const String login = '${admin}login.php';
+  static const String addUser = '${admin}add_user.php';
 }

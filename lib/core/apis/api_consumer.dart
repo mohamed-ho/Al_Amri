@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:image_picker/image_picker.dart';
+
 abstract class ApiConsumer {
   Future<dynamic> get(String url, {Map<String, dynamic>? queryParameters});
   Future<dynamic> post(String url,

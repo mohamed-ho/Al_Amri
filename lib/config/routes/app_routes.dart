@@ -1,12 +1,13 @@
-import 'package:alamri_adm/admain_feature/domain/entities/type.dart';
-import 'package:alamri_adm/admain_feature/presentation/screens/add_honey_type_Screen.dart';
-import 'package:alamri_adm/admain_feature/presentation/screens/home_admin_screen.dart';
+import 'package:alamri_adm/features/auth/presentation/screens/login_screen.dart';
+import 'package:alamri_adm/features/honey_type/domain/entities/type.dart';
+import 'package:alamri_adm/features/honey_type/presentation/screens/add_honey_type_screen.dart';
+import 'package:alamri_adm/features/honey_type/presentation/screens/home_admin_screen.dart';
 import 'package:alamri_adm/features/orders/domain/entities/order.dart';
 import 'package:alamri_adm/features/orders/presentation/screens/order_details_on_phone.dart';
-import 'package:alamri_adm/item_feature/domain/entities/item.dart';
-import 'package:alamri_adm/item_feature/presentation/screen/add_item_screen.dart';
-import 'package:alamri_adm/offer_feature/domain/entities/offer.dart';
-import 'package:alamri_adm/offer_feature/presentation/screens/add_offer_screen.dart';
+import 'package:alamri_adm/features/item_feature/domain/entities/item.dart';
+import 'package:alamri_adm/features/item_feature/presentation/screen/add_item_screen.dart';
+import 'package:alamri_adm/features/offer_feature/domain/entities/offer.dart';
+import 'package:alamri_adm/features/offer_feature/presentation/screens/add_offer_screen.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -15,6 +16,7 @@ class Routes {
   static const String addItemScreen = '/addItemScreen';
   static const String addOfferScreen = '/addOfferScreen';
   static const String orderDetails = '/orderDetails';
+  static const String loginScreen = 'loginScreen';
 }
 
 class AppRoutes {
@@ -52,6 +54,8 @@ class AppRoutes {
             builder: (context) => OrderDetailsOnPhone(
                   orders: order,
                 ));
+      case Routes.loginScreen:
+        return MaterialPageRoute(builder: (context) => const LoginScreen());
 
       default:
         return unDefinedRoute();

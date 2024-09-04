@@ -1,4 +1,3 @@
-import 'package:alamri_adm/config/routes/app_routes.dart';
 import 'package:alamri_adm/core/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

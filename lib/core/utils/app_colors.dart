@@ -9,6 +9,7 @@ class AppColors {
   static Color scaffoldColor = Color(colorFroHex('E6B9A6'));
   static Color thirdColor = Color(colorFroHex('939185'));
   static Color backgroundItemsColor = Color(colorFroHex('f3f3f3'));
+  static Color newLogoBackgroundColors = Color(colorFroHex('FFF2EA'));
 }
 
 int colorFroHex(String colorHex) {

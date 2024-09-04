@@ -1,10 +1,10 @@
-import 'package:alamri_adm/admain_feature/data/data_source/honey_type_remote_data_source.dart';
+import 'package:alamri_adm/features/honey_type/data/data_source/honey_type_remote_data_source.dart';
 import 'package:alamri_adm/al_amri_enjection.dart';
 import 'package:alamri_adm/core/apis/dio_consumer.dart';
 import 'package:alamri_adm/core/apis/end_points.dart';
 import 'package:alamri_adm/features/orders/data/models/item_order_model.dart';
 import 'package:alamri_adm/features/orders/data/models/order_model.dart';
-import 'package:alamri_adm/item_feature/data/data_source/item_remote_data_source.dart';
+import 'package:alamri_adm/features/item_feature/data/data_source/item_remote_data_source.dart';
 
 abstract class OrderRemoteDataSource {
   Future<List<OrderModel>> getOrders();

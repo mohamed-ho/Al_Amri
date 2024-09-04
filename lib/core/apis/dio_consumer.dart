@@ -1,18 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:alamri_adm/core/apis/api_consumer.dart';
 import 'package:alamri_adm/core/apis/end_points.dart';
 import 'package:alamri_adm/core/apis/status_code.dart';
 import 'package:alamri_adm/core/errors/exceptions.dart';
 import 'package:path/path.dart';
-// import 'package:flutter/foundation.dart' show kIsWeb;
-// import 'package:dio/browser.dart'
-//     if (dart.library.io) 'package:dio/adapter_io.dart';
-
 import 'package:dio/dio.dart';
-// import 'package:dio/browser.dart';
-import 'package:alamri_adm/admain_feature/enjection_honey_type.dart' as di;
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 
@@ -23,9 +16,6 @@ class DioConsumer implements ApiConsumer {
 
   DioConsumer({required this.client}) {
     if (kIsWeb) {
-      // BrowserHttpClientAdapter bca = BrowserHttpClientAdapter();
-      // bca.withCredentials = true;
-      // client.httpClientAdapter = bca;
     } else {
       (client.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () =>
           HttpClient()
@@ -40,10 +30,6 @@ class DioConsumer implements ApiConsumer {
       ..validateStatus = (status) {
         return status! < StatusCode.internalServerError;
       };
-
-    // if (kDebugMode) {
-    //   client.interceptors.add(di.sl<LogInterceptor>());
-    // }
   }
 
   @override
@@ -103,7 +89,7 @@ class DioConsumer implements ApiConsumer {
           file!.path,
           filename: basename(file.path),
         ),
-        ...body
+        ...body,
       });
     } else {
       formData = FormData.fromMap({
@@ -120,40 +106,60 @@ class DioConsumer implements ApiConsumer {
       _handleDioError(e);
     }
   }
-}
 
-dynamic _handelResposeAsJson(Response<dynamic> response) {
-  return jsonDecode(response.data.toString());
-}
-
-dynamic _handleDioError(DioException error) {
-  switch (error.type) {
-    case DioExceptionType.connectionTimeout:
-    case DioExceptionType.sendTimeout:
-    case DioExceptionType.receiveTimeout:
-      throw const FetchDataException();
-    case DioExceptionType.badResponse:
-      switch (error.response?.statusCode) {
-        case StatusCode.badRequest:
-          throw const BadRequestException();
-        case StatusCode.unauthorized:
-        case StatusCode.forbidden:
-          throw const UnauthorizedException();
-        case StatusCode.notFound:
-          throw const NotFoundException();
-        case StatusCode.conflict:
-          throw const ConflictException();
-
-        case StatusCode.internalServerError:
-          throw const InternalServerErrorException();
+  Future uploadImage(
+      {required String url,
+      Uint8List? image,
+      Map<String, dynamic>? body}) async {
+    try {
+      FormData formData = FormData.fromMap({
+        'imageFile': MultipartFile.fromBytes(image!.toList(),
+            filename: 'mohamed hosny hassan'),
+        ...body!
+      });
+      final response = await client.post(url, data: formData);
+      if (response.statusCode == 200) {
+        print('اخيرا اخيرااااااااااااااااااااااااااااااااااااااااااااا');
+        print(response.data);
       }
-      break;
-    case DioExceptionType.cancel:
-      break;
-    case DioExceptionType.unknown:
-      throw const NoInternetConnectionException();
+    } catch (e) {
+      print('you have errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrror $e');
+    }
+  }
 
-    default:
-      throw const NoInternetConnectionException();
+  dynamic _handelResposeAsJson(Response<dynamic> response) {
+    return jsonDecode(response.data.toString());
+  }
+
+  dynamic _handleDioError(DioException error) {
+    switch (error.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+        throw const FetchDataException();
+      case DioExceptionType.badResponse:
+        switch (error.response?.statusCode) {
+          case StatusCode.badRequest:
+            throw const BadRequestException();
+          case StatusCode.unauthorized:
+          case StatusCode.forbidden:
+            throw const UnauthorizedException();
+          case StatusCode.notFound:
+            throw const NotFoundException();
+          case StatusCode.conflict:
+            throw const ConflictException();
+
+          case StatusCode.internalServerError:
+            throw const InternalServerErrorException();
+        }
+        break;
+      case DioExceptionType.cancel:
+        break;
+      case DioExceptionType.unknown:
+        throw const NoInternetConnectionException();
+
+      default:
+        throw const NoInternetConnectionException();
+    }
   }
 }

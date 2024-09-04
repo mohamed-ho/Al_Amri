@@ -1,11 +1,12 @@
-import 'package:alamri_adm/admain_feature/presentation/bloc/honey_type_bloc.dart';
+import 'package:alamri_adm/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:alamri_adm/features/honey_type/presentation/bloc/honey_type_bloc.dart';
 import 'package:alamri_adm/al_amri_enjection.dart';
 import 'package:alamri_adm/config/locale/app_localizations_setup.dart';
 import 'package:alamri_adm/config/routes/app_routes.dart';
 import 'package:alamri_adm/config/themes/app_themes.dart';
 import 'package:alamri_adm/features/orders/presentation/bloc/orders_bloc.dart';
-import 'package:alamri_adm/item_feature/presentation/bloc/items_bloc.dart';
-import 'package:alamri_adm/offer_feature/presentation/bloc/offer_bloc.dart';
+import 'package:alamri_adm/features/item_feature/presentation/bloc/items_bloc.dart';
+import 'package:alamri_adm/features/offer_feature/presentation/bloc/offer_bloc.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,7 @@ class AlAmri extends StatelessWidget {
         BlocProvider(create: (context) => ls<ItemsBloc>()),
         BlocProvider(create: (context) => ls<OfferBloc>()),
         BlocProvider(create: (context) => ls<OrdersBloc>()),
+        BlocProvider(create: (context) => ls<AuthBloc>()),
       ],
       child: ScreenUtilInit(
           designSize: Size(height, width),
@@ -39,6 +41,7 @@ class AlAmri extends StatelessWidget {
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
               onGenerateRoute: AppRoutes.onGenerateRoute,
+              initialRoute: Routes.loginScreen,
             );
           }),
     );

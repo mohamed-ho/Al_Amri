@@ -20,12 +20,12 @@ class CustomErrorWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(color: Colors.red, fontSize: 16.sp),
+                style: const TextStyle(color: Colors.red, fontSize: 16),
               ),
               Image.asset(
                 "assets/icons/error.png",
-                width: 30.w,
-                height: 30.w,
+                width: 30,
+                height: 30,
               )
             ],
           ),

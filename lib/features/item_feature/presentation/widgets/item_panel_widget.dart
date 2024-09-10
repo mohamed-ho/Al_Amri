@@ -1,6 +1,7 @@
 import 'package:alamri_adm/al_amri_enjection.dart';
 import 'package:alamri_adm/config/routes/app_routes.dart';
 import 'package:alamri_adm/core/utils/functions.dart';
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/item_feature/presentation/bloc/items_bloc.dart';
 import 'package:alamri_adm/features/item_feature/presentation/widgets/item_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,7 @@ class ItemPanelWidget extends StatelessWidget {
                           child: Text(getTranslation("item_is_empty", context)),
                         ));
             } else {
-              BlocProvider.of<ItemsBloc>(context).add(GetItemsEvent());
-              return const Center(child: CircularProgressIndicator());
+              return const CustomLoadingWidget();
             }
           },
         ),

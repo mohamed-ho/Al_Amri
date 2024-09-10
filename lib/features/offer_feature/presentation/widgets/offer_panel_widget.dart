@@ -2,6 +2,7 @@ import 'package:alamri_adm/al_amri_enjection.dart';
 import 'package:alamri_adm/config/routes/app_routes.dart';
 import 'package:alamri_adm/core/utils/functions.dart';
 import 'package:alamri_adm/core/widgets/custom_error_widget.dart';
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/offer_feature/presentation/bloc/offer_bloc.dart';
 import 'package:alamri_adm/features/offer_feature/presentation/widgets/offer_widget.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,10 @@ class OfferPanelWidget extends StatelessWidget {
                     );
                   });
             } else if (state is OfferLoadingState) {
-              return const Center(child: CircularProgressIndicator());
+              return const CustomLoadingWidget();
             } else {
               BlocProvider.of<OfferBloc>(context).add(GetOfferEvent());
-              return const Center(child: CircularProgressIndicator());
+              return const CustomLoadingWidget();
             }
           },
         ),

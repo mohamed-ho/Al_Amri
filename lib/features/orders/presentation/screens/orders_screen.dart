@@ -1,5 +1,6 @@
 import 'package:alamri_adm/al_amri_enjection.dart';
 import 'package:alamri_adm/core/widgets/custom_error_widget.dart';
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/orders/presentation/bloc/orders_bloc.dart';
 import 'package:alamri_adm/features/orders/presentation/widgets/order_widget.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +32,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 ),
               );
             } else if (state is OrdersLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const CustomLoadingWidget();
             } else if (state is OrderGetedState) {
               if (state.orders.isEmpty) {
                 return const Center(
@@ -52,9 +51,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   });
             } else {
               BlocProvider.of<OrdersBloc>(context).add(GetOrdersEvent());
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const CustomLoadingWidget();
             }
           },
         ),

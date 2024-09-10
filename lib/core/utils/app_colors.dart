@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color logoColor = Color(colorFroHex('6A704C'));
+  static Color logoColor = Color(colorFroHex('ECB24E'));
   static Color logoBackgroundColor = Color(colorFroHex('EDE1D1'));
   static Color appBarColor = Color(colorFroHex('EEEDEB'));
   static Color primaryColor = Color(colorFroHex('2F3645'));

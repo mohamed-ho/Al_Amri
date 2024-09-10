@@ -1,6 +1,8 @@
 import 'package:alamri_adm/config/routes/app_routes.dart';
+import 'package:alamri_adm/core/utils/app_colors.dart';
 import 'package:alamri_adm/core/utils/functions.dart';
 import 'package:alamri_adm/core/widgets/custom_error_widget.dart';
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/core/widgets/success_process_widget.dart';
 import 'package:alamri_adm/features/honey_type/domain/entities/type.dart';
 import 'package:alamri_adm/features/honey_type/presentation/bloc/honey_type_bloc.dart';
@@ -17,6 +19,7 @@ class AddHoneyTypeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.logoBackgroundColor,
       body: BlocBuilder<HoneyTypeBloc, HoneyTypeState>(
         builder: (context, state) {
           if (state is HoneyTypeError) {
@@ -36,7 +39,7 @@ class AddHoneyTypeScreen extends StatelessWidget {
               ),
             );
           } else if (state is HoneyTypeLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const CustomLoadingWidget();
           } else {
             return honeyType != null
                 ? UpdateHoneyTypeWidget(

@@ -39,9 +39,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/cell.jpg
-    - assets/images/cell2.jpg
-    - assets/images/be.png
+    - assets/images/
     - lang\en.json
     - lang\ar.json
     - assets/icons/

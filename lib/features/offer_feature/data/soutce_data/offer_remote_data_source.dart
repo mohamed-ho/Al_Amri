@@ -35,6 +35,7 @@ class OfferRemoteDataSourceImpl implements OfferRemoteDataSource {
     final result = await dioConsumer.get(EndPoints.getOffers);
     // Collect all the futures
     List<OfferModel> offerModels = [];
+    
     for (int i = 0; i < result['data'].length; i++) {
       TypesAndQuantitiesModel typesAndQuantitiesModel =
           await getTypesAndQuantities(result['data'][i]['id']);

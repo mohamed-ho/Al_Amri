@@ -1,4 +1,5 @@
 import 'dart:html' as html;
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/honey_type/domain/entities/type.dart';
 import 'package:alamri_adm/features/honey_type/presentation/widgets/custom_add_honey_text_form_field.dart';
 import 'package:alamri_adm/al_amri_enjection.dart';
@@ -63,9 +64,7 @@ class _AddItemFramState extends State<AddItemFram> {
         }
       },
       child: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? const CustomLoadingWidget()
           : Form(
               key: _globalKey,
               child: Center(

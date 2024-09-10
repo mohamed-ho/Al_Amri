@@ -19,30 +19,30 @@ class OrderWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'معلومات العميل',
               style: TextStyle(
-                  fontSize: 18.spMax,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
             const Divider(),
             Text(
               "الاسم :  ${order.name}",
-              style: TextStyle(
-                  fontSize: 16.spMax, color: Colors.black.withOpacity(.5)),
+              style:
+                  TextStyle(fontSize: 16, color: Colors.black.withOpacity(.5)),
             ),
             Text(
               "البريد :  ${order.email}",
-              style: TextStyle(
-                  fontSize: 16.spMax, color: Colors.black.withOpacity(.5)),
+              style:
+                  TextStyle(fontSize: 16, color: Colors.black.withOpacity(.5)),
             ),
             Text("رقم الهاتف :  ${order.phone}",
                 style: TextStyle(
-                    fontSize: 16.spMax, color: Colors.black.withOpacity(.5))),
-            Text(
+                    fontSize: 16, color: Colors.black.withOpacity(.5))),
+            const Text(
               " العنوان بالتفصيل",
-              style: TextStyle(fontSize: 18.spMax, color: Colors.black),
+              style: TextStyle(fontSize: 18, color: Colors.black),
             ),
             const Divider(),
             Padding(
@@ -51,23 +51,20 @@ class OrderWidget extends StatelessWidget {
                 children: [
                   Text('محافظة:${order.gover}',
                       style: TextStyle(
-                          fontSize: 16.spMax,
-                          color: Colors.black.withOpacity(.5))),
+                          fontSize: 16, color: Colors.black.withOpacity(.5))),
                   Text('مدينة:${order.city}',
                       style: TextStyle(
-                          fontSize: 16.spMax,
-                          color: Colors.black.withOpacity(.5))),
+                          fontSize: 16, color: Colors.black.withOpacity(.5))),
                   Text('العنوان:${order.address}',
                       style: TextStyle(
-                          fontSize: 16.spMax,
-                          color: Colors.black.withOpacity(.5))),
+                          fontSize: 16, color: Colors.black.withOpacity(.5))),
                 ],
               ),
             ),
             const Divider(),
             Text('سعر الطلب : ${order.totalPrice} جنية',
-                style: TextStyle(
-                    fontSize: 18.spMax,
+                style: const TextStyle(
+                    fontSize: 18,
                     color: Colors.red,
                     fontWeight: FontWeight.bold)),
             Row(

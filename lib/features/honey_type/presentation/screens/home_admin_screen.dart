@@ -20,7 +20,7 @@ class HomeAdminScreen extends StatelessWidget {
       _controller =
           SidebarXController(selectedIndex: selectedIndex!, extended: true);
     } else {
-      _controller = SidebarXController(selectedIndex: 1, extended: true);
+      _controller = SidebarXController(selectedIndex: 0, extended: true);
     }
     return Scaffold(
       appBar: ScreenUtil().screenWidth < 600
@@ -127,19 +127,20 @@ class ExampleSidebarX extends StatelessWidget {
           height: 100.w,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Image.asset('assets/images/cell2.jpg'),
+            child: Image.asset('assets/images/logo.png'),
           ),
         );
       },
       items: [
         SidebarXItem(
-            iconBuilder: (selected, hovered) => Image.asset(
-                  'assets/icons/type.png',
-                  width: 30.w,
-                  height: 30.w,
-                ),
-            label: getTranslation('honey_Type', context),
-            onTap: () => const TypePanelWidget()),
+          iconBuilder: (selected, hovered) => Image.asset(
+            'assets/icons/type.png',
+            width: 30.w,
+            height: 30.w,
+          ),
+          label: getTranslation('honey_Type', context),
+          //onTap: () => const TypePanelWidget()
+        ),
         SidebarXItem(
           iconBuilder: (selected, hovered) => Image.asset(
             'assets/icons/item.png',
@@ -162,21 +163,6 @@ class ExampleSidebarX extends StatelessWidget {
                   height: 30.w,
                 ),
             label: getTranslation("orders", context))
-        // const SidebarXItem(
-        //   icon: Icons.people,
-        //   label: 'People',
-        // ),
-        // SidebarXItem(
-        //   icon: Icons.favorite,
-        //   label: 'Favorites',
-        //   selectable: false,
-        //   onTap: () => _showDisabledAlert(context),
-        // ),
-        // SidebarXItem(
-        //   iconBuilder: (open, close) =>
-        //       open ? const FlutterLogo(size: 20) : const FlutterLogo(size: 20),
-        //   label: 'Flutter',
-        // ),
       ],
     );
   }
@@ -196,7 +182,6 @@ class _ScreensExample extends StatelessWidget {
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
-        final pageTitle = _getTitleByIndex(controller.selectedIndex);
         switch (controller.selectedIndex) {
           case 0:
             return const TypePanelWidget();
@@ -208,32 +193,11 @@ class _ScreensExample extends StatelessWidget {
             return const OrdersScreen();
           default:
             return Text(
-              pageTitle,
+              'no page',
               style: theme.textTheme.headlineSmall,
             );
         }
       },
     );
-  }
-}
-
-String _getTitleByIndex(int index) {
-  switch (index) {
-    case 0:
-      return 'Home';
-    case 1:
-      return 'Search';
-    case 2:
-      return 'People';
-    case 3:
-      return 'Favorites';
-    case 4:
-      return 'Custom iconWidget';
-    case 5:
-      return 'Profile';
-    case 6:
-      return 'Settings';
-    default:
-      return 'Not found page';
   }
 }

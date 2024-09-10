@@ -1,3 +1,4 @@
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/honey_type/data/data_source/honey_type_remote_data_source.dart';
 import 'package:alamri_adm/features/honey_type/data/repository/honey_type_repository_impl.dart';
 import 'package:alamri_adm/features/honey_type/domain/usecase/add_honey_type_usecase.dart';
@@ -57,18 +58,7 @@ class OfferWidget extends StatelessWidget {
           } else if (state is GetListOfHoneyTypeState) {
             return OfferLoadedWidget(offer: offer, types: state.types);
           } else {
-            return Container(
-              height: .3.h,
-              padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 5.w),
-              margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 5.w),
-              decoration: BoxDecoration(
-                  color: AppColors.backgroundItemsColor,
-                  borderRadius: BorderRadius.circular(10.w),
-                  boxShadow: [BoxShadow(blurRadius: 5.w, color: Colors.grey)]),
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return const CustomLoadingWidget();
           }
         },
       ),

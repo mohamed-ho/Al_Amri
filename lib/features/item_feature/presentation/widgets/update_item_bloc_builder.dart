@@ -1,3 +1,4 @@
+import 'package:alamri_adm/core/widgets/custom_loading_widget.dart';
 import 'package:alamri_adm/features/honey_type/presentation/bloc/honey_type_bloc.dart';
 import 'package:alamri_adm/core/widgets/custom_error_widget.dart';
 import 'package:alamri_adm/features/item_feature/domain/entities/item.dart';
@@ -28,9 +29,7 @@ class UpdateItemBlocBuilder extends StatelessWidget {
           } else if (state is HoneyTypeLoaded) {
             return UpdateItemFormWidget(types: state.honeyType, item: item);
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const CustomLoadingWidget();
           }
         });
   }

@@ -29,28 +29,30 @@ class OrderItemDetailsWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    itemOrder.name!,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'سعر العبوه : ${itemOrder.price} جنيه',
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    'وزن العبوه : ${itemOrder.wieght} جرام',
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    overflow: TextOverflow.clip,
-                    "عدد العبوات المطلوبه :  $quanity",
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      itemOrder.name!,
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'سعر العبوه : ${itemOrder.price} جنيه',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'وزن العبوه : ${itemOrder.wieght} جرام',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      overflow: TextOverflow.clip,
+                      "عدد العبوات المطلوبه :  $quanity",
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
               ),
               Container(
                 height: .2.sh,

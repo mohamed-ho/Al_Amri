@@ -17,9 +17,7 @@ class OrderOffersDetailsWidget extends StatelessWidget {
         itemCount: offers.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: .008.sh,
-            ),
+            padding: EdgeInsets.symmetric(vertical: .008.sh, horizontal: 10),
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -36,31 +34,36 @@ class OrderOffersDetailsWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          offers[index]!.title,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'سعر العرض : ${offers[index]!.price}',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          'عدد طلب العرض : ${order.offersQuantities![index]}',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            maxLines: null,
+                            overflow: TextOverflow.visible,
+                            offers[index]!.title,
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            'سعر العرض : ${offers[index]!.price}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            'عدد طلب العرض : ${order.offersQuantities![index]}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
                     ),
                     Container(
-                      height: .2.sw,
-                      width: .2.sw,
+                      height: .2.sh,
+                      width: .2.sh,
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(blurRadius: 3.w, spreadRadius: 3.w)
                       ]),
-                      child: Image.network(EndPoints.imageRoot+offers[index]!.image),
+                      child: Image.network(
+                          EndPoints.imageRoot + offers[index]!.image),
                     ),
                   ],
                 ),

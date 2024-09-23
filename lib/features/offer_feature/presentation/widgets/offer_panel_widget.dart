@@ -14,11 +14,13 @@ class OfferPanelWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child: Text(getTranslation("add_type", context)),
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.addOfferScreen);
-          }),
+      floatingActionButton: MouseRegion(
+        child: FloatingActionButton(
+            child: Text(getTranslation("add_type", context)),
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.addOfferScreen);
+            }),
+      ),
       body: BlocProvider(
         create: (context) => ls<OfferBloc>()..add(GetOfferEvent()),
         child: BlocBuilder<OfferBloc, OfferState>(
@@ -35,13 +37,15 @@ class OfferPanelWidget extends StatelessWidget {
                   child: Text('لا يوجد عروض'),
                 );
               }
-              return ListView.builder(
-                  itemCount: state.offers.length,
-                  itemBuilder: (context, index) {
-                    return OfferWidget(
-                      offer: state.offers[index]!,
-                    );
-                  });
+              return MouseRegion(
+                child: ListView.builder(
+                    itemCount: state.offers.length,
+                    itemBuilder: (context, index) {
+                      return OfferWidget(
+                        offer: state.offers[index]!,
+                      );
+                    }),
+              );
             } else if (state is OfferLoadingState) {
               return const CustomLoadingWidget();
             } else {

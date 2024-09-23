@@ -1,4 +1,5 @@
 import 'package:alamri_adm/features/auth/presentation/screens/login_screen.dart';
+import 'package:alamri_adm/features/home/presentation/screens/home.dart';
 import 'package:alamri_adm/features/honey_type/domain/entities/type.dart';
 import 'package:alamri_adm/features/honey_type/presentation/screens/add_honey_type_screen.dart';
 import 'package:alamri_adm/features/honey_type/presentation/screens/home_admin_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String addOfferScreen = '/addOfferScreen';
   static const String orderDetails = '/orderDetails';
   static const String loginScreen = 'loginScreen';
+  static const String homeScreen = '/homeScreen';
 }
 
 class AppRoutes {
@@ -56,6 +58,8 @@ class AppRoutes {
                 ));
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (context) => const LoginScreen());
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (context) => const Home());
 
       default:
         return unDefinedRoute();

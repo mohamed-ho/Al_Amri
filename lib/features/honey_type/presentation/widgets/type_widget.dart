@@ -46,32 +46,36 @@ class TypeWidget extends StatelessWidget {
                       flex: 1,
                       child: Column(
                         children: [
-                          IconButton(
-                            onPressed: () {
-                              BlocProvider.of<HoneyTypeBloc>(context).add(
-                                  DeleteHoneyTypeEven(honeyId: honeyType.id));
-                            },
-                            hoverColor: AppColors.scaffoldColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.all(10).w,
-                              child: Icon(
-                                Icons.delete,
-                                size: 30.w,
-                                color: Colors.red.shade300,
+                          MouseRegion(
+                            child: IconButton(
+                              onPressed: () {
+                                BlocProvider.of<HoneyTypeBloc>(context).add(
+                                    DeleteHoneyTypeEven(honeyId: honeyType.id));
+                              },
+                              hoverColor: AppColors.scaffoldColor,
+                              icon: Padding(
+                                padding: const EdgeInsets.all(10).w,
+                                child: Icon(
+                                  Icons.delete,
+                                  size: 30.w,
+                                  color: Colors.red.shade300,
+                                ),
                               ),
                             ),
                           ),
-                          IconButton(
-                            onPressed: () => Navigator.pushNamed(
-                                context, Routes.addHoneyTypeScreen,
-                                arguments: honeyType),
-                            hoverColor: AppColors.scaffoldColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.all(10).w,
-                              child: Icon(
-                                Icons.edit,
-                                size: 30.w,
-                                color: Colors.yellow.shade300,
+                          MouseRegion(
+                            child: IconButton(
+                              onPressed: () => Navigator.pushNamed(
+                                  context, Routes.addHoneyTypeScreen,
+                                  arguments: honeyType),
+                              hoverColor: AppColors.scaffoldColor,
+                              icon: Padding(
+                                padding: const EdgeInsets.all(10).w,
+                                child: Icon(
+                                  Icons.edit,
+                                  size: 30.w,
+                                  color: Colors.yellow.shade300,
+                                ),
                               ),
                             ),
                           )

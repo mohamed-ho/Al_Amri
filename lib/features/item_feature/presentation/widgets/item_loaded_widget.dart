@@ -106,33 +106,12 @@ class ItemLoadedWidget extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, Routes.addItemScreen,
-                                  arguments: item);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.thirdColor,
-                                shadowColor: AppColors.primaryColor),
-                            child: Row(
-                              children: [
-                                Text(
-                                  getTranslation("update", context),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                                Icon(
-                                  Icons.mode,
-                                  weight: 30.w,
-                                  color: Colors.yellow.shade400,
-                                ),
-                              ],
-                            ),
-                          ),
-                          ElevatedButton(
+                          MouseRegion(
+                            child: ElevatedButton(
                               onPressed: () {
-                                BlocProvider.of<ItemsBloc>(context)
-                                    .add(DeleteItemEvent(item: item));
+                                Navigator.pushNamed(
+                                    context, Routes.addItemScreen,
+                                    arguments: item);
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.thirdColor,
@@ -140,17 +119,44 @@ class ItemLoadedWidget extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                    getTranslation("delete", context),
+                                    getTranslation("update", context),
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                   ),
                                   Icon(
-                                    Icons.delete,
+                                    Icons.mode,
                                     weight: 30.w,
-                                    color: Colors.red.shade400,
+                                    color: Colors.yellow.shade400,
                                   ),
                                 ],
-                              )),
+                              ),
+                            ),
+                          ),
+                          MouseRegion(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<ItemsBloc>(context)
+                                      .add(DeleteItemEvent(item: item));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.thirdColor,
+                                    shadowColor: AppColors.primaryColor),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      getTranslation("delete", context),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
+                                    ),
+                                    Icon(
+                                      Icons.delete,
+                                      weight: 30.w,
+                                      color: Colors.red.shade400,
+                                    ),
+                                  ],
+                                )),
+                          ),
                         ],
                       ),
                     ],

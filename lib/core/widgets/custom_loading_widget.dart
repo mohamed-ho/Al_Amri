@@ -5,15 +5,15 @@ class CustomLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          'assets/images/logo.png',
-          width: double.infinity,
-          height: double.infinity,
-        ),
-        const Center(child: CircularProgressIndicator()),
-      ],
+    return Center(
+      child: Stack(
+        children: [
+          Image.asset(
+            'assets/images/logo.png',
+          ),
+          const Center(child: CircularProgressIndicator()),
+        ],
+      ),
     );
   }
 }

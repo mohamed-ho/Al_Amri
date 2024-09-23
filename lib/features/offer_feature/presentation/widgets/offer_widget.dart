@@ -58,7 +58,18 @@ class OfferWidget extends StatelessWidget {
           } else if (state is GetListOfHoneyTypeState) {
             return OfferLoadedWidget(offer: offer, types: state.types);
           } else {
-            return const CustomLoadingWidget();
+            return Container(
+              height: .31.sh,
+              padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 5.w),
+              margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 5.w),
+              decoration: BoxDecoration(
+                  color: AppColors.thirdColor,
+                  borderRadius: BorderRadius.circular(10.w),
+                  boxShadow: [BoxShadow(blurRadius: 5.w, color: Colors.grey)]),
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
           }
         },
       ),

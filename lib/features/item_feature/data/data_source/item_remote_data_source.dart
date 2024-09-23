@@ -21,8 +21,7 @@ class ItemRemoteDataSourceImpl implements ItemRemoteDataSource {
   @override
   Future<Map<String, dynamic>> addItem(ItemModel item) async {
     try {
-      await httpConsumer.uploadFileWithHTTP(
-          url: EndPoints.addItem, selectedFile: item.imagefile!, item: item);
+      await httpConsumer.uploadFileWithHTTP(url: EndPoints.addItem, item: item);
       return {'status': 'success'};
     } catch (e) {
       rethrow;
@@ -50,7 +49,7 @@ class ItemRemoteDataSourceImpl implements ItemRemoteDataSource {
           body: item.toJson(), formDataIsEnabled: true);
     }
     await httpConsumer.uploadFileWithHTTP(
-        url: EndPoints.updateItem, selectedFile: item.imagefile!, item: item);
+        url: EndPoints.updateItem, item: item);
     return {'status': 'success'};
   }
 

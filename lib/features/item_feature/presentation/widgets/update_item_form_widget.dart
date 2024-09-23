@@ -65,7 +65,7 @@ class _UpdateItemFormWidgetState extends State<UpdateItemFormWidget> {
             isLoading = false;
           });
           Navigator.pushReplacementNamed(context, Routes.inisialRoute,
-              arguments: 1);
+              arguments: 0);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("تم تعديل المنتج بنجاح"),
             backgroundColor: Colors.green,
@@ -287,9 +287,7 @@ class _UpdateItemFormWidgetState extends State<UpdateItemFormWidget> {
                                             UpdateItemEvent(
                                                 item: Item(
                                                     id: widget.item.id,
-                                                    image: image == null
-                                                        ? widget.item.image
-                                                        : image!.name,
+                                                    image: widget.item.image,
                                                     typeId: value!.id,
                                                     imagefile: image,
                                                     price: int.parse(

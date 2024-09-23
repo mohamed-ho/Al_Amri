@@ -62,108 +62,110 @@ class ExampleSidebarX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SidebarX(
-      controller: _controller,
-      theme: SidebarXTheme(
-        width: 50.w,
-        margin: const EdgeInsets.all(10).w,
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(20),
+    return MouseRegion(
+      child: SidebarX(
+        controller: _controller,
+        theme: SidebarXTheme(
+          width: 50.w,
+          margin: const EdgeInsets.all(10).w,
+          decoration: BoxDecoration(
+            color: AppColors.primaryColor,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          hoverColor: AppColors.primaryColor,
+          textStyle: TextStyle(
+              fontSize: 14.spMax,
+              fontWeight: FontWeight.bold,
+              color: Colors.white.withOpacity(.3)),
+          selectedTextStyle: Theme.of(context).textTheme.labelSmall,
+          hoverTextStyle: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+          itemTextPadding: const EdgeInsets.only(left: 30).w,
+          selectedItemTextPadding: const EdgeInsets.only(left: 30).w,
+          itemDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: AppColors.primaryColor,
+            ),
+          ),
+          selectedItemDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: AppColors.primaryColor.withOpacity(0.37),
+            ),
+            gradient: LinearGradient(
+              colors: [AppColors.primaryColor, AppColors.secondColor],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.28),
+                blurRadius: 5,
+              )
+            ],
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white.withOpacity(0.7),
+            size: 20.w,
+          ),
+          selectedIconTheme: IconThemeData(
+            color: Colors.white,
+            size: 30.w,
+          ),
         ),
-        hoverColor: AppColors.primaryColor,
-        textStyle: TextStyle(
-            fontSize: 14.spMax,
-            fontWeight: FontWeight.bold,
-            color: Colors.white.withOpacity(.3)),
-        selectedTextStyle: Theme.of(context).textTheme.labelSmall,
-        hoverTextStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-        itemTextPadding: const EdgeInsets.only(left: 30).w,
-        selectedItemTextPadding: const EdgeInsets.only(left: 30).w,
-        itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
+        extendedTheme: SidebarXTheme(
+          width: 200.w,
+          decoration: BoxDecoration(
             color: AppColors.primaryColor,
           ),
         ),
-        selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: AppColors.primaryColor.withOpacity(0.37),
-          ),
-          gradient: LinearGradient(
-            colors: [AppColors.primaryColor, AppColors.secondColor],
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.white.withOpacity(0.28),
-              blurRadius: 30.w,
-            )
-          ],
+        footerDivider: Divider(
+          color: Colors.white.withOpacity(.3),
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white.withOpacity(0.7),
-          size: 20.w,
-        ),
-        selectedIconTheme: IconThemeData(
-          color: Colors.white,
-          size: 30.w,
-        ),
-      ),
-      extendedTheme: SidebarXTheme(
-        width: 200.w,
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-        ),
-      ),
-      footerDivider: Divider(
-        color: Colors.white.withOpacity(.3),
-      ),
-      headerBuilder: (context, extended) {
-        return SizedBox(
-          height: 100.w,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('assets/images/logo.png'),
-          ),
-        );
-      },
-      items: [
-        SidebarXItem(
-          iconBuilder: (selected, hovered) => Image.asset(
-            'assets/icons/type.png',
-            width: 30.w,
-            height: 30.w,
-          ),
-          label: getTranslation('honey_Type', context),
-          //onTap: () => const TypePanelWidget()
-        ),
-        SidebarXItem(
-          iconBuilder: (selected, hovered) => Image.asset(
-            'assets/icons/item.png',
-            width: 30.w,
-            height: 30.w,
-          ),
-          label: getTranslation('items', context),
-        ),
-        SidebarXItem(
+        headerBuilder: (context, extended) {
+          return SizedBox(
+            height: 100.w,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset('assets/images/logo.png'),
+            ),
+          );
+        },
+        items: [
+          SidebarXItem(
             iconBuilder: (selected, hovered) => Image.asset(
-                  'assets/icons/offer.png',
-                  width: 30.w,
-                  height: 30.w,
-                ),
-            label: getTranslation("offers", context)),
-        SidebarXItem(
+              'assets/icons/type.png',
+              width: 30.w,
+              height: 30.w,
+            ),
+            label: getTranslation('honey_Type', context),
+            //onTap: () => const TypePanelWidget()
+          ),
+          SidebarXItem(
             iconBuilder: (selected, hovered) => Image.asset(
-                  'assets/icons/orders.png',
-                  width: 30.w,
-                  height: 30.w,
-                ),
-            label: getTranslation("orders", context))
-      ],
+              'assets/icons/item.png',
+              width: 30.w,
+              height: 30.w,
+            ),
+            label: getTranslation('items', context),
+          ),
+          SidebarXItem(
+              iconBuilder: (selected, hovered) => Image.asset(
+                    'assets/icons/offer.png',
+                    width: 30.w,
+                    height: 30.w,
+                  ),
+              label: getTranslation("offers", context)),
+          SidebarXItem(
+              iconBuilder: (selected, hovered) => Image.asset(
+                    'assets/icons/orders.png',
+                    width: 30.w,
+                    height: 30.w,
+                  ),
+              label: getTranslation("orders", context))
+        ],
+      ),
     );
   }
 }

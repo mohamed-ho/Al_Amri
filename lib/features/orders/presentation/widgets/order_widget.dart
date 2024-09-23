@@ -70,25 +70,29 @@ class OrderWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    BlocProvider.of<OrdersBloc>(context)
-                        .add(DeleteOrderEvent(orderId: order.id!));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white),
-                  child: const Text('تم شحن الطلب'),
+                MouseRegion(
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      BlocProvider.of<OrdersBloc>(context)
+                          .add(DeleteOrderEvent(orderId: order.id!));
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        foregroundColor: Colors.white),
+                    child: const Text('تم شحن الطلب'),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.orderDetails,
-                        arguments: order);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.amber[400],
-                      foregroundColor: Colors.white),
-                  child: const Text('عرض التفاصيل'),
+                MouseRegion(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.orderDetails,
+                          arguments: order);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.amber[400],
+                        foregroundColor: Colors.white),
+                    child: const Text('عرض التفاصيل'),
+                  ),
                 )
               ],
             )

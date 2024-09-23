@@ -13,11 +13,13 @@ class ItemPanelWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Text(getTranslation("add_type", context)),
-        onPressed: () => Navigator.pushNamed(
-          context,
-          Routes.addItemScreen,
+      floatingActionButton: MouseRegion(
+        child: FloatingActionButton(
+          child: Text(getTranslation("add_type", context)),
+          onPressed: () => Navigator.pushNamed(
+            context,
+            Routes.addItemScreen,
+          ),
         ),
       ),
       body: BlocProvider(
@@ -28,15 +30,18 @@ class ItemPanelWidget extends StatelessWidget {
               return const Text('you have Error');
             } else if (state is ItemsGetedState) {
               return Center(
-                  child: state.items.isNotEmpty
-                      ? ListView.builder(
-                          itemCount: state.items.length,
-                          itemBuilder: (context, index) {
-                            return ItemWidget(item: state.items[index]!);
-                          })
-                      : Center(
-                          child: Text(getTranslation("item_is_empty", context)),
-                        ));
+                child: state.items.isEmpty
+                    ? Center(
+                        child: Text(getTranslation("item_is_empty", context)))
+                    : ListView.builder(
+                        itemCount: state.items.length,
+                        itemBuilder: (context, index) {
+                          return ItemWidget(item: state.items[index]!);
+                        }),
+              );
+            } else if (state is ItmesLoadedState) {
+              BlocProvider.of<ItemsBloc>(context).add(GetItemsEvent());
+              return const CustomLoadingWidget();
             } else {
               return const CustomLoadingWidget();
             }

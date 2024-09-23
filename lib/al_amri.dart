@@ -7,7 +7,6 @@ import 'package:alamri_adm/config/themes/app_themes.dart';
 import 'package:alamri_adm/features/orders/presentation/bloc/orders_bloc.dart';
 import 'package:alamri_adm/features/item_feature/presentation/bloc/items_bloc.dart';
 import 'package:alamri_adm/features/offer_feature/presentation/bloc/offer_bloc.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +37,6 @@ class AlAmri extends StatelessWidget {
                   AppLocalizationsSetup.localeResolutionCallback,
               localizationsDelegates:
                   AppLocalizationsSetup.localizationsDelegates,
-              builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
               onGenerateRoute: AppRoutes.onGenerateRoute,
               initialRoute: Routes.loginScreen,

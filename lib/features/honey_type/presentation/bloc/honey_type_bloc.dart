@@ -54,6 +54,7 @@ class HoneyTypeBloc extends Bloc<HoneyTypeEvent, HoneyTypeState> {
 
     on<UpdateHoneyTypeEvent>(
       (event, emit) async {
+        emit(HoneyTypeLoading());
         final result = await updateHoneyTypeUsecase(event.honeyType);
         result.fold((l) => emit(HoneyTypeError(message: l.message)),
             (r) => emit(HoneyTypeAddedState(state: r)));

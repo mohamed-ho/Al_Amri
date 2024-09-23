@@ -21,11 +21,13 @@ class _TypePanelWidgetState extends State<TypePanelWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Text(getTranslation("add_type", context)),
-        onPressed: () => Navigator.pushNamed(
-          context,
-          Routes.addHoneyTypeScreen,
+      floatingActionButton: MouseRegion(
+        child: FloatingActionButton(
+          child: Text(getTranslation("add_type", context)),
+          onPressed: () => Navigator.pushNamed(
+            context,
+            Routes.addHoneyTypeScreen,
+          ),
         ),
       ),
       body: BlocProvider(

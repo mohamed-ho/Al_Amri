@@ -74,7 +74,7 @@ class _AddOfferFormWidgetState extends State<AddOfferFormWidget> {
             isLoading = false;
           });
           Navigator.pushReplacementNamed(context, Routes.inisialRoute,
-              arguments: 2);
+              arguments: 0);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("تم اضافة العرض بنجاح"),
             backgroundColor: Colors.green,

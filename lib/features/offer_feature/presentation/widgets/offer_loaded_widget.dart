@@ -72,9 +72,11 @@ class OfferLoadedWidget extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10.h),
-                    child: HoneyTypeWidgetOnOffer(
-                      types: types,
-                      offer: offer,
+                    child: MouseRegion(
+                      child: HoneyTypeWidgetOnOffer(
+                        types: types,
+                        offer: offer,
+                      ),
                     ),
                   ),
                   Row(
@@ -111,32 +113,11 @@ class OfferLoadedWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routes.addOfferScreen,
-                              arguments: offer);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.thirdColor,
-                            shadowColor: AppColors.primaryColor),
-                        child: Row(
-                          children: [
-                            Text(
-                              getTranslation("update", context),
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Icon(
-                              Icons.mode,
-                              weight: 30.w,
-                              color: Colors.yellow.shade400,
-                            ),
-                          ],
-                        ),
-                      ),
-                      ElevatedButton(
+                      MouseRegion(
+                        child: ElevatedButton(
                           onPressed: () {
-                            BlocProvider.of<OfferBloc>(context)
-                                .add(DeleteOfferEvent(offer: offer));
+                            Navigator.pushNamed(context, Routes.addOfferScreen,
+                                arguments: offer);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.thirdColor,
@@ -144,16 +125,42 @@ class OfferLoadedWidget extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                getTranslation("delete", context),
+                                getTranslation("update", context),
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
                               Icon(
-                                Icons.delete,
+                                Icons.mode,
                                 weight: 30.w,
-                                color: Colors.red.shade400,
+                                color: Colors.yellow.shade400,
                               ),
                             ],
-                          )),
+                          ),
+                        ),
+                      ),
+                      MouseRegion(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              BlocProvider.of<OfferBloc>(context)
+                                  .add(DeleteOfferEvent(offer: offer));
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.thirdColor,
+                                shadowColor: AppColors.primaryColor),
+                            child: Row(
+                              children: [
+                                Text(
+                                  getTranslation("delete", context),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
+                                Icon(
+                                  Icons.delete,
+                                  weight: 30.w,
+                                  color: Colors.red.shade400,
+                                ),
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                 ],

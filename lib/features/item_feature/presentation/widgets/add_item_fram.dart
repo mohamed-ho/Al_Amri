@@ -56,7 +56,7 @@ class _AddItemFramState extends State<AddItemFram> {
             isLoading = false;
           });
           Navigator.pushReplacementNamed(context, Routes.inisialRoute,
-              arguments: 1);
+              arguments: 0);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("تم اضافة المنتج بنجاح"),
             backgroundColor: Colors.green,
